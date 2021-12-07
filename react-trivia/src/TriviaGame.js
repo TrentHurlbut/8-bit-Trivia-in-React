@@ -1,7 +1,6 @@
-import axios from 'axios';
 import CategoryButton from "./components/CategoryButton";
 import React, { useState } from 'react';
-import QuestionScreen from "./components/QuestionScreen";
+import QuestionsScreen from "./components/QuestionsScreen";
 
 function TriviaGame() {
   
@@ -37,7 +36,7 @@ function TriviaGame() {
 
   return (
     <div className={buttonScreen ? "button-screen" : "question-screen"}>
-      {buttonScreen ? categoryButtons : <QuestionScreen clickFunction={toCategories} category={category} />}
+      {buttonScreen ? categoryButtons : <QuestionsScreen clickFunction={toCategories} category={category} />}
     </div>
   );
 }
