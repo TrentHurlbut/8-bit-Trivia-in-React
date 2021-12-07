@@ -4,45 +4,40 @@ import React, { useState } from 'react';
 import QuestionScreen from "./components/QuestionScreen";
 
 function TriviaGame() {
-
+  
+  const [gameStart, setGameStart] = useState(true);
   const [buttonScreen, setButtonScreen] = useState(true);
+  const [category, setCategory] = useState(0);
+  const [categoryButtons, setCategoryButtons] = useState([])
 
-  let questionObj;
-
-  function toQuestion(val = buttonScreen, key) {
-
-    axios.get(`https://opentdb.com/api.php?amount=1&category=${key}&difficulty=medium&type=multiple`)
-      .then(res => {
-        console.log(res.data);
-        questionObj = <QuestionScreen />;
-      })
-    
-    if (val) {
-      setButtonScreen(false);
-    } else {
-      setButtonScreen(true);
-    }
-
-    return questionObj;
+  let toQuestion = (category) => {
+    setCategory(category);
+    setButtonScreen(false)
   }
 
-  let usedRequests = [];
-  let categoryButtons = [];
+  let toCategories = () => {
+    setButtonScreen(true)
+  }
 
-  for (let i = 0; i < 6; i++){
-    let randomizer = Math.floor(Math.random() * 23)
-
-    while (usedRequests.includes(randomizer)) {
-      randomizer = Math.floor(Math.random() * 23)
+  if (gameStart) {
+    let usedRequests = [];
+  
+    for (let i = 0; i < 6; i++){
+      let randomizer = Math.floor(Math.random() * 23)
+      while (usedRequests.includes(randomizer)) {
+        randomizer = Math.floor(Math.random() * 23)
+      }
+  
+      categoryButtons.push(<CategoryButton key={randomizer + 9} searchkey={randomizer + 9} clickFunction={() => { toQuestion(randomizer + 9) }} />);
+      usedRequests.push(randomizer);
     }
-
-    categoryButtons.push(<CategoryButton key={randomizer + 9} searchKey={randomizer + 9} clickFunction={() => { toQuestion(buttonScreen, randomizer + 9) }} />);
-    usedRequests.push(randomizer);
+    setGameStart(false);
+    return categoryButtons;
   }
 
   return (
     <div className={buttonScreen ? "button-screen" : "question-screen"}>
-      {buttonScreen ? categoryButtons : questionObj}
+      {buttonScreen ? categoryButtons : <QuestionScreen clickFunction={toCategories} category={category} />}
     </div>
   );
 }
