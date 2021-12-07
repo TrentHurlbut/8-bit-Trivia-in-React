@@ -15,8 +15,19 @@ code {
 .button-screen {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding: 30px;
 }
 
-.category-button {
-  margin: 20px;
+.cb {
+  margin: 25px;
+}
+
+.questions-screen {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 30px;
+}
+
+.qb {
+  margin: 25px;
 }

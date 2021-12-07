@@ -13,6 +13,6 @@ export default function CattegoryButton({ searchkey, clickFunction }) {
     }, [])
 
   return (
-    <button className="category-button" key={searchkey} onClick={clickFunction} searchkey={searchkey}>{category}</button>
+    <button type="button" className="nes-btn is-primary cb" key={searchkey} onClick={clickFunction} searchkey={searchkey}>{category}</button>
   )
 }

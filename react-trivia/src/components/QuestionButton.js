@@ -1,3 +1,3 @@
 export default function QuestionButton({ clickFunction, text }) {
-  return <button onClick={() => { clickFunction() }}>{text}</button>
+  return <button type="button" className="nes-btn is-primary qb" onClick={() => { clickFunction() }}>{text}</button>
 }

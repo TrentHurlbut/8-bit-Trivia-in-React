@@ -1,3 +1,3 @@
 export default function AnswerButton({ clickFunction }) {
-  return <button onClick={() => { clickFunction() }}>Answer Placeholder</button>
+  return <button type="button" className="nes-btn is-primary" onClick={() => { clickFunction() }}>Answer Placeholder</button>
 }
