@@ -1,36 +1,30 @@
-import axios from "axios";
+import axios from 'axios';
 import CategoryButton from "./components/CategoryButton";
 import React, { useState } from 'react';
+import QuestionScreen from "./components/QuestionScreen";
 
 function TriviaGame() {
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [triviaCategories, setTriviaCategories] = useState([
-    'General Knowledge',
-    'Entertainment: Books',
-    'Entertainment: Filmm',
-    'Entertainment: Music',
-    'Entertainment: Musicals & Theaters',
-    'Entertainment: Television',
-    'Entertainment: Video Games',
-    'Entertainment: Board Games',
-    'Science & Nature',
-    'Science: Computers',
-    'Science: Mathematics',
-    'Mythology',
-    'Sports',
-    'Geography',
-    'History',
-    'Politics',
-    'Art',
-    'Celebrities',
-    'Animals',
-    'Vehicles',
-    'Entertainment: Comics',
-    'Science: Gadgets',
-    'Entertainment: Japanese Anime & Manga',
-    'Entertainment: Cartoon & Animations',
-  ]);
+  const [buttonScreen, setButtonScreen] = useState(true);
+
+  let questionObj;
+
+  function toQuestion(val = buttonScreen, key) {
+
+    axios.get(`https://opentdb.com/api.php?amount=1&category=${key}&difficulty=medium&type=multiple`)
+      .then(res => {
+        console.log(res.data);
+        questionObj = <QuestionScreen />;
+      })
+    
+    if (val) {
+      setButtonScreen(false);
+    } else {
+      setButtonScreen(true);
+    }
+
+    return questionObj;
+  }
 
   let usedRequests = [];
   let categoryButtons = [];
@@ -42,13 +36,13 @@ function TriviaGame() {
       randomizer = Math.floor(Math.random() * 23)
     }
 
-    categoryButtons.push(<CategoryButton key={randomizer + 9} text={triviaCategories[randomizer]} />);
+    categoryButtons.push(<CategoryButton key={randomizer + 9} searchKey={randomizer + 9} clickFunction={() => { toQuestion(buttonScreen, randomizer + 9) }} />);
     usedRequests.push(randomizer);
   }
 
   return (
-    <div className="TriviaGame">
-      {categoryButtons}
+    <div className={buttonScreen ? "button-screen" : "question-screen"}>
+      {buttonScreen ? categoryButtons : questionObj}
     </div>
   );
 }
