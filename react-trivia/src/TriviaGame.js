@@ -34,11 +34,18 @@ function TriviaGame() {
     return categoryButtons;
   }
 
-  return (
-    <div className={buttonScreen ? "button-screen" : "question-screen"}>
-      {buttonScreen ? categoryButtons : <QuestionsScreen clickFunction={toCategories} category={category} />}
-    </div>
-  );
+  return (buttonScreen ? (
+      <>
+      <h1>Welcome to 8-bit Trivia!</h1>
+      <div className="button-screen">
+      {categoryButtons}
+      </div>
+      <h3>Pick a Category to Begin.</h3>
+      </>
+      )
+    :
+      < QuestionsScreen clickFunction = { toCategories } category = { category } />
+  )
 }
 
 export default TriviaGame;

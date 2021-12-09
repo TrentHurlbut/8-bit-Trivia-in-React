@@ -14,6 +14,7 @@ export default function QuestionsScreen({ category, clickFunction }) {
   }, [])
 
   return (
+    <>
     <div className="questions-screen">
       {questions.map((question) => (<QuestionCard
         text={question.question}
@@ -21,5 +22,10 @@ export default function QuestionsScreen({ category, clickFunction }) {
         correctAnswer={question.correct_answer}
         answers={question.incorrect_answers}
       />))}
-    </div>)
+    </div>
+    <div className="qb">
+    <button type="button" className="nes-btn is-primary" onClick={() => { clickFunction() }}>Back</button>
+    </div>
+    </>
+)
 }

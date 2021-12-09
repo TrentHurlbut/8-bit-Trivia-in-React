@@ -40,47 +40,50 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
               setAnswerStatus('incorrect')
           }
         }}>{answer}</button>))}
-        <button type="button" className="nes-btn is-primary qb" onClick={() => { clickFunction() }}>Back</button>
     </div>
   )
     :
     answerStatus === 'correct' ? (
-      <div className="questions-screen">
+      <div className="results-card">
         <section className="nes-container is-dark">
+          <section className="message-list">
+            <section className="message -left">
+              <i className="nes-bcrikko"></i>
+              <div className="nes-balloon from-left is-dark">
+                <p>Correct! Great job!</p>
+              </div>
+            </section>
+          </section>
+        </section>
+        <div className="icon-section">
+          <i class="nes-icon coin is-large"></i>
+          <i class="nes-icon coin is-large"></i>
+          <i class="nes-icon coin is-large"></i>
+          <i class="nes-icon coin is-large"></i>
+          <i class="nes-icon coin is-large"></i>
+          <i class="nes-icon coin is-large"></i>
+        </div>
+      </div>
+    ) : (
+    <div className="results-card">
+      <section className="nes-container is-dark">
         <section className="message-list">
           <section className="message -left">
             <i className="nes-bcrikko"></i>
             <div className="nes-balloon from-left is-dark">
-              <p>Correct! Great job!</p>
+                  <p>Oooohhhh... Sorry! Wrong Answer! The correct answer was {correctAnswer}.</p>
             </div>
           </section>
         </section>
-        </section>
-        <i class="nes-icon coin is-large"></i>
-        <i class="nes-icon coin is-large"></i>
-        <i class="nes-icon coin is-large"></i>
-        <i class="nes-icon coin is-large"></i>
-        <i class="nes-icon coin is-large"></i>
-        <i class="nes-icon coin is-large"></i>
+      </section>
+      <div className="icon-section">
+        <i class="nes-icon close is-large"></i>
+        <i class="nes-icon close is-large"></i>
+        <i class="nes-icon close is-large"></i>
+        <i class="nes-icon close is-large"></i>
+        <i class="nes-icon close is-large"></i>
+        <i class="nes-icon close is-large"></i>
       </div>
-    ) : (
-    <div className="questions-screen">
-      <section className="nes-container is-dark">
-      <section className="message-list">
-        <section className="message -left">
-          <i className="nes-bcrikko"></i>
-          <div className="nes-balloon from-left is-dark">
-            <p>Oooohhhh... Sorry! Wrong Answer!</p>
-          </div>
-        </section>
-      </section>
-      </section>
-      <i class="nes-icon close is-large"></i>
-      <i class="nes-icon close is-large"></i>
-      <i class="nes-icon close is-large"></i>
-      <i class="nes-icon close is-large"></i>
-      <i class="nes-icon close is-large"></i>
-      <i class="nes-icon close is-large"></i>
     </div>
   )
   )

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #8CC7A1;
 }
 
 code {
@@ -16,10 +17,11 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 30px;
+  box-sizing: border-box;
 }
 
 .cb {
-  margin: 25px;
+  margin: 45px;
 }
 
 .questions-screen {
@@ -29,5 +31,21 @@ code {
 }
 
 .qb {
-  margin: 25px;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.icon-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.question-card {
+  margin: 15px;
+}
+
+h1, h3 {
+  padding: 50px 25px 25px 25px;
+  text-align: center;
 }
