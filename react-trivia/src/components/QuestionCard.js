@@ -1,3 +1,4 @@
+import he from '../../node_modules/he/he'
 import { useState } from 'react';
 
 export default function QuestionCard({ clickFunction, text, correctAnswer, answers }) {
@@ -25,7 +26,7 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
             <section className="message -left black-box">
               <i className="nes-bcrikko"></i>
               <div className="nes-balloon from-left is-dark">
-                <p>{text}</p>
+                <p>{he.decode(text)}</p>
               </div>
             </section>
           </section>
@@ -39,7 +40,7 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
           } else {
               setAnswerStatus('incorrect')
           }
-        }}>{answer}</button>))}
+        }}>{he.decode(answer)}</button>))}
     </div>
   )
     :
@@ -47,7 +48,7 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
       <div className="results-card">
         <section className="nes-container is-dark">
           <section className="message-list">
-            <section className="message -left">
+            <section className="message -left black-box">
               <i className="nes-bcrikko"></i>
               <div className="nes-balloon from-left is-dark">
                 <p>Correct! Great job!</p>
@@ -68,10 +69,10 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
     <div className="results-card">
       <section className="nes-container is-dark">
         <section className="message-list">
-          <section className="message -left">
+          <section className="message -left black-box">
             <i className="nes-bcrikko"></i>
             <div className="nes-balloon from-left is-dark">
-                  <p>Oooohhhh... Sorry! Wrong Answer! The correct answer was {correctAnswer}.</p>
+                  <p>Oooohhhh... Sorry! Wrong Answer! The correct answer was {he.decode(correctAnswer)}.</p>
             </div>
           </section>
         </section>
