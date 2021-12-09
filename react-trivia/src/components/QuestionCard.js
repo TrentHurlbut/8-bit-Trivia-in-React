@@ -22,7 +22,7 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
     <div className="question-card">
         <section className="nes-container is-dark">
           <section className="message-list">
-            <section className="message -left">
+            <section className="message -left black-box">
               <i className="nes-bcrikko"></i>
               <div className="nes-balloon from-left is-dark">
                 <p>{text}</p>

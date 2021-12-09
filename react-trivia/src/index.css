@@ -49,3 +49,8 @@ h1, h3 {
   padding: 50px 25px 25px 25px;
   text-align: center;
 }
+
+.black-box {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
