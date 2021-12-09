@@ -4,6 +4,8 @@ Six categories are selected at random and presetned to you, the user, every time
 
 Success will bring you **gold coins**. Failure will leave you wondering what could have been.
 
+Play it live here: https://8-bit-trivia.netlify.app/
+
 ## Screenshots
 
 ![Intro Screen](intro-screen.png)
