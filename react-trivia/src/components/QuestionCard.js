@@ -1,9 +1,9 @@
 import he from '../../node_modules/he/he'
 import { useState } from 'react';
 
-export default function QuestionCard({ clickFunction, text, correctAnswer, answers }) {
+export default function QuestionCard({ text, correctAnswer, answers, incrementScore, incrementTotal }) {
 
-  const[answerStatus, setAnswerStatus] = useState(null)
+  const [answerStatus, setAnswerStatus] = useState(null)
 
   console.log(answers)
   console.log(correctAnswer)
@@ -36,9 +36,12 @@ export default function QuestionCard({ clickFunction, text, correctAnswer, answe
         className="nes-btn is-warning ab"
         onClick={() => {
           if (answer === correctAnswer) {
-              setAnswerStatus('correct')
+            setAnswerStatus('correct')
+            incrementScore()
+            incrementTotal()
           } else {
-              setAnswerStatus('incorrect')
+            setAnswerStatus('incorrect')
+            incrementTotal()
           }
         }}>{he.decode(answer)}</button>))}
     </div>

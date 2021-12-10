@@ -8,7 +8,17 @@ function TriviaGame() {
   const [buttonScreen, setButtonScreen] = useState(true);
   const [category, setCategory] = useState(0);
   const [categoryButtons, setCategoryButtons] = useState([])
+  const [score, setScore] = useState(0);
+  const [total, setTotal] = useState(0)
 
+  const incrementScore = () => {
+    setScore(score + 1)
+  }
+
+  const incrementTotal = () => {
+    setTotal(total + 1)
+  }
+ 
   let toQuestion = (category) => {
     setCategory(category);
     setButtonScreen(false)
@@ -41,10 +51,11 @@ function TriviaGame() {
       {categoryButtons}
       </div>
       <h3>Pick a Category to Begin.</h3>
+      {total > 0 && <h3>Score: {score} / {total}</h3>}
       </>
       )
     :
-      < QuestionsScreen clickFunction = { toCategories } category = { category } />
+    < QuestionsScreen clickFunction={toCategories} category={category} passedScore={score} passedTotal={total} incrementScore={incrementScore} incrementTotal={incrementTotal}/>
   )
 }
 
