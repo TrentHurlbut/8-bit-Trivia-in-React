@@ -46,11 +46,11 @@ function TriviaGame() {
 
   return (buttonScreen ? (
       <>
-      <h1>Welcome to 8-bit Trivia!</h1>
+      {total === 0 && <h1>Welcome to 8-bit Trivia!</h1>}
       <div className="button-screen">
       {categoryButtons}
       </div>
-      <h3>Pick a Category to Begin.</h3>
+      {total === 0 && <h3>Pick a Category to Begin.</h3>}
       {total > 0 && <h3>Score: {score} / {total}</h3>}
       </>
       )
